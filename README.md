@@ -1,26 +1,32 @@
-# SDO_Course
-My notes taken upon the Stanford Data Ocean scholarship
+Stanford Data Ocean (SDO) Course Notes
+Welcome to my curated notes from the Stanford Data Ocean Scholarship course! This README organizes key concepts and tips learned throughout the program, with a focus on Python programming essentials.
 
-`To find a command or any shortcut in Jupyter just type H in any cell that doesn't have code inside ;).`
+Tip: In Jupyter Notebook, press H in an empty cell to view a list of commands and shortcuts! 🚀
 
-## General Notes:
-<h3>Python</h3>
-> :memo: **Note:**
-1. Floor division: returns only the whole part following division
-2. When you divide any two numbers, even if they are integers that result in a whole number, you’ll always get a float
-3. When you mix an integer and a float in an operation, Python will always return a float
-4. If an apostrophe is used, then double quotes are required.
-5. Python keeps track of the variable changes even if you changed its value after initilization
-6. Python is case senstive btw
-7. As a convenience in Python, you can assign values to multiple variables at the same time, using just one line of code. This is known in Python as "unpacking", This will work as long as the number of values matches the number of variables.
-8. It is a good practice in python to assign constants values to capital string names
-9. You can convert a value to become an integer by wrapping the value inside the int() function. This is known as casting
-10. String comparison can be useful, for example, when comparing if the text a person entered is equaivalent to the saved password.
-11. You can make lists inside other lists
-12. Using -1 as the index position always returns the last item in a list
-13. Simplest way to add a new element to a list is to use the append() method
-14. You can remove an item from a list by using the del statement.  All del needs is the name of the list and the element's index position that you would like remove
-15. Slicing doesn't include last position in the list
-16. The end of the range() is excluded
-17. The range() function generates a list of numbers, but the numbers don't have to be used within the for loop
+📝 General Notes: Python Essentials
+Key Concepts
 
+Floor Division (//): Returns only the integer part of a division (e.g., 7 // 2 = 3).
+Division Always Returns a Float: Even if the result is a whole number (e.g., 4 / 2 = 2.0).
+Mixing Integers and Floats: Operations between an integer and a float always yield a float.
+String Quotes: Use double quotes (") if a string contains an apostrophe (e.g., "It's sunny").
+Variable Tracking: Python updates variable values dynamically after reassignment.
+Case Sensitivity: Python is case-sensitive (e.g., Variable ≠ variable).
+Multiple Variable Assignment (Unpacking): Assign multiple variables in one line (e.g., x, y = 1, 2), provided the number of values matches the variables.
+Constants: Use uppercase names for constants (e.g., MAX_SIZE = 100).
+Type Casting: Convert values to integers using int() (e.g., int("5") = 5).
+String Comparison: Useful for tasks like password verification (e.g., input_text == saved_password).
+Nested Lists: Lists can contain other lists (e.g., [[1, 2], [3, 4]]).
+Negative Indexing: Use -1 to access the last item in a list (e.g., my_list[-1]).
+Adding Elements: Append items to a list using .append() (e.g., my_list.append(5)).
+Removing Elements: Delete items using del with the index (e.g., del my_list[0]).
+Slicing: Excludes the end index (e.g., my_list[1:3] includes indices 1 and 2).
+Range Exclusion: The range() function excludes the end value (e.g., range(1, 5) generates 1, 2, 3, 4).
+Flexible Range: range() generates numbers that can be used outside a for loop or converted to a list (e.g., list(range(3)) = [0, 1, 2]).
+
+
+📚 How to Use These Notes
+
+Browse for quick reference during coding.
+Practice the examples in a Python environment like Jupyter Notebook.
+Expand on these concepts by exploring Python's official documentation or additional resources.
