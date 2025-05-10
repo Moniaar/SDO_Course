@@ -31,5 +31,3 @@ Welcome to my curated notes from the **Stanford Data Ocean Scholarship** course!
 - **Browse** for quick reference during coding.
 - **Practice** the examples in a Python environment like Jupyter Notebook.
 - **Expand** on these concepts by exploring Python's official documentation or additional resources.
-
-Happy coding! 🎉
