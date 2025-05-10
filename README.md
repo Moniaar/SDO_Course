@@ -20,4 +20,7 @@ My notes taken upon the Stanford Data Ocean scholarship
 12. Using -1 as the index position always returns the last item in a list
 13. Simplest way to add a new element to a list is to use the append() method
 14. You can remove an item from a list by using the del statement.  All del needs is the name of the list and the element's index position that you would like remove
+15. Slicing doesn't include last position in the list
+16. The end of the range() is excluded
+17. The range() function generates a list of numbers, but the numbers don't have to be used within the for loop
 
