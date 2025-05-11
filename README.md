@@ -27,6 +27,15 @@ Welcome to my curated notes from the **Stanford Data Ocean Scholarship** course!
 18. A list comprehension is a list that is created based upon an existing list. You loop through the existing list and, optionally, perform some operation on each successive value before adding that value to the new list
 19. To create a list of items that cannot be changed. you cab use Tuples to do just that. Python refers to values that cannot be changed as immutable. A tuple is identical to a list except it is immutable. A tuple is a simple data structure but can be very useful when you want to store a set of values that should not be changed.
 20. Tuples are technically defined by the presence of a comma; the parentheses make them look neater and more readable. If you want to define a tuple with one element, you need to include a trailing comma: single_element_tuple = (8,). Without the trailing comma, it would just be an integer, not a tuple.
+21. When the variable inside len() is a string, len() returns the number of characters in the string.
+22. You can use any object that you can create in Python as a value in a dictionary. To get the value associated with a key, give the name of the dictionary and then place the key inside a set of square brackets (as we did when accessing the data within lists). Python returns the value associated with that key.
+23. To use the key to access the associated value:
+    ```
+    for key in person:
+        print(person[key])
+    ```
+    Or you can add the values() method to the dictionary for loop so that it just provides its values
+24. Sets in python are unordered thats why you can't access it using indexing, every element has to be unique and it also returns the value in alphabetical order. You will more commonly use the set() function to convert a series of elements (like a list) to a set.
 
 ---
 
