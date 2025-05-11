@@ -37,6 +37,46 @@ Welcome to my curated notes from the **Stanford Data Ocean Scholarship** course!
     Or you can add the values() method to the dictionary for loop so that it just provides its values
 24. Sets in python are unordered thats why you can't access it using indexing, every element has to be unique and it also returns the value in alphabetical order. You will more commonly use the set() function to convert a series of elements (like a list) to a set.
 
+
+## 📝 General Notes: R Essentials
+### Key Concpets
+1. 3 %% 2 is named a Modulus/Remainder not a single %
+2. Commenting style, characters, variable naming, Comparison Operators rules are same as python
+3. You can concatenate (or combine) character types by using the paste() function: ``` paste("Here we go", "again!") ```
+4. ``` print("Let's print some R!", quote = FALSE) ``` Setting the quote parameter to FALSE removes the quotes from the output.
+5. ```
+   # Using the noquote() function prevents quotes from being output.
+   noquote("Let's print some R!") 
+    ```
+6. Assignment, in R, generally uses the leftward assignment operator (i.e., <- ). The equals operator (i.e., = ) can be used in some circumstances but not all. The <- operator can be used anywhere for assignment.
+```
+# Assigning a value to a variable:
+           introduction <- "R here!"
+            print(introduction)
+```
+7. The following shortcuts will insert the leftward assignment operator (<-):
+
+Win: alt + -
+
+Mac: option + -
+
+8. ### Formatted printing
+
+The **cat()** function can be used to concatenate and format character output.
+```
+# Format output (spaces are automatically added between items)
+
+men <- 32
+women <- 27
+
+# Assigning the sum of the variables men and women to the variable num_participants.
+num_participants <- men+women
+
+
+# Concatenating the variable num_participants with two character strings and returning the output.
+cat("There are", num_participants, "individuals currently participating in the study.")
+```
+9. T and F are reserved for TRUE and False respectively, and Any non-zero value is considered TRUE!.
 ---
 
 ## 📚 How to Use These Notes
