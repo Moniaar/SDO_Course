@@ -80,6 +80,11 @@ cat("There are", num_participants, "individuals currently participating in the s
 
 ### Data structures:
 1. Vectors: The fundamental data structure in R is the vector. A vector is a one-dimensional sequence of data elements, of the same type, stored in a sequence. The elements are most commonly of type character, logical, integer or numeric.
+2. Unlike most programming languages the index positions of a vector in R begin counting from 1.
+3. You can get slices or subsets of a vector by placing the index position of items between square brackets
+4. A negative value means to exclude the index position
+5. Lists: can be created using the list() function where you can create different types of elements inside it.
+6. Data Frames: Data frames are the most common way of storing and analyzing data in R. The columns (which are vectors) can be of different types, but they must be the same length.
 ---
 
 ## 📚 How to Use These Notes
