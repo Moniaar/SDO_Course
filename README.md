@@ -77,6 +77,9 @@ num_participants <- men+women
 cat("There are", num_participants, "individuals currently participating in the study.")
 ```
 9. T and F are reserved for TRUE and False respectively, and Any non-zero value is considered TRUE!.
+
+### Data structures:
+1. Vectors: The fundamental data structure in R is the vector. A vector is a one-dimensional sequence of data elements, of the same type, stored in a sequence. The elements are most commonly of type character, logical, integer or numeric.
 ---
 
 ## 📚 How to Use These Notes
