@@ -90,7 +90,47 @@ cat("There are", num_participants, "individuals currently participating in the s
 1. Comma separated values which is known as (csv) is a common way that data can be formatted. To import a csv file, read.csv() is used. The name of the file is passed in and the dataset will be imported as a data frame: ``` df <- read.csv("data/heart_disease.csv") ```.
 2. head: The head() function displays the first six rows (by default), whereas The tail() function displays the last six rows (by default).
 3. Another way that we can import data is by using read.table(). This reads a file in table format and creates a data frame from it. We can set its sep parameter to indicate how the data is separated (e.g., sep="," for comma separated values). Setting the header parameter to TRUE indicates that the first row contains the names of the columns: ``` df_table <- read.table("data/heart_disease.csv", sep=",", header=TRUE, ) ```
-4. 
+### Conditions in R: the format is as follows:
+```
+if (<condition>) {
+  <block of code>
+}
+```
+1. Basically it's like C in this formatting look at an example:
+``` x <- 12
+3. if(x > 0) {
+  print("x is a positive number")
+}
+```
+2. For multiple conditions we use if- else if:
+```
+if (<condition>) {
+    <block of code>
+} else if (<condition>) {
+    <block of code>
+}
+```
+- For an if-else if statement, only one of the conditions will be able to return TRUE (if any). The first condition to return TRUE will have its code block run and then the if statement will be exited. Therefore, it's important to consider the order in which you place your if statements. If no condition returns TRUE, no code will be executed.
+3. If we want to guarantee that some action is taken regardless of the result of each condition, we use if else.
+4. Same for loop foramtting as C.
+  - function seq_along() which returns the index of each item in the vector.
+### Functions in R:
+Below shows the simplest structure of a function in R. You begin by using function() to indicate to R that you are defining a function. The function declaration will always be followed by parentheses within which you will provide any information the function needs to perform its job. Following the function() declaration is the function definition (the code to be executed to perform the desired task) contained within curly braces. The defined function should then be assigned to an appropriate function name. We use the keyword function to declare it. Here is an example:
+```
+
+``` R
+name_of_function <- function() {
+  <block of code to be executed>
+}
+```
+And more clear one :
+```
+greeting <- function(){
+  print("Hello!")
+}
+```
+- Keep in Mind that just like any other programming language: No code is run when a function is defined. An instance of a function is created but no code is executed until the function is called.
+
 ## 📚 How to Use These Notes
 - **Browse** for quick reference during coding.
 - **Practice** the examples in a Python environment like Jupyter Notebook.
