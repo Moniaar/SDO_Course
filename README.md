@@ -85,8 +85,12 @@ cat("There are", num_participants, "individuals currently participating in the s
 4. A negative value means to exclude the index position
 5. Lists: can be created using the list() function where you can create different types of elements inside it.
 6. Data Frames: Data frames are the most common way of storing and analyzing data in R. The columns (which are vectors) can be of different types, but they must be the same length.
----
 
+### Importing data in R:
+1. Comma separated values which is known as (csv) is a common way that data can be formatted. To import a csv file, read.csv() is used. The name of the file is passed in and the dataset will be imported as a data frame: ``` df <- read.csv("data/heart_disease.csv") ```.
+2. head: The head() function displays the first six rows (by default), whereas The tail() function displays the last six rows (by default).
+3. Another way that we can import data is by using read.table(). This reads a file in table format and creates a data frame from it. We can set its sep parameter to indicate how the data is separated (e.g., sep="," for comma separated values). Setting the header parameter to TRUE indicates that the first row contains the names of the columns: ``` df_table <- read.table("data/heart_disease.csv", sep=",", header=TRUE, ) ```
+4. 
 ## 📚 How to Use These Notes
 - **Browse** for quick reference during coding.
 - **Practice** the examples in a Python environment like Jupyter Notebook.
