@@ -130,6 +130,11 @@ greeting <- function(){
 }
 ```
 - Keep in Mind that just like any other programming language: No code is run when a function is defined. An instance of a function is created but no code is executed until the function is called.
+1. Return in R: The standard return rule in R is that a function will return the last value that it computed. However, if we would like to be explicit about what is outputted, or end the execution, we can use return().
+2. we can assign a function to each element of our vector using the sapply() method, we first pass a vector into sapply(). We then indicate the function that we would like to apply to each element within the passed-in vector by assigning the function to the FUN parameter. In this case, the square_num function was passed in so sapply returns the square of each number from the passed-in vector. FUN is a crucial component that defines the operation to be applied to each element of the input, aka specifies the function to be applied to each element of the input vector or list.
+3. For asserting a method into a matrix we use apply() function: ``` apply(mat, MARGIN=2, FUN=mean) ```.
+   Since a matrix is two dimensional, there's an additional required parameter called MARGIN which indicates whether you would like for the function to be applied over the rows (indicated by a 1) or over the columns (indicated by a 2). we first pass a matrix (mat) into apply(). We then indicate that we would like a function to be applied to the columns of the passed-in matrix by assigning 2 to the MARGIN parameter (2 indicates columns). Finally, we indicate the function that we would like to apply to each column of the passed-in matrix by assigning the function to the FUN parameter. In this case, the mean function was passed in so apply returns the mean of each column of the passed-in matrix.
+4. Tip: To learn more about a function or an object, you can place a question mark ("?") before the object or use the help() function. Running the cell will display a description and details about the object along with exmples of how it's used: ``` ?sapply() ``` or ``` help(read.table) ```
 
 ## 📚 How to Use These Notes
 - **Browse** for quick reference during coding.
