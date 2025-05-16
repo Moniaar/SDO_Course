@@ -136,6 +136,21 @@ greeting <- function(){
    Since a matrix is two dimensional, there's an additional required parameter called MARGIN which indicates whether you would like for the function to be applied over the rows (indicated by a 1) or over the columns (indicated by a 2). we first pass a matrix (mat) into apply(). We then indicate that we would like a function to be applied to the columns of the passed-in matrix by assigning 2 to the MARGIN parameter (2 indicates columns). Finally, we indicate the function that we would like to apply to each column of the passed-in matrix by assigning the function to the FUN parameter. In this case, the mean function was passed in so apply returns the mean of each column of the passed-in matrix.
 4. Tip: To learn more about a function or an object, you can place a question mark ("?") before the object or use the help() function. Running the cell will display a description and details about the object along with exmples of how it's used: ``` ?sapply() ``` or ``` help(read.table) ```
 
+## 📝 General Notes: Pandas Essentials
+### Key Concpets
+Pandas provides data structures and intuitive capabilities for performing fast and easy data cleaning, preparation, manipulation, aggregation, and sophisticated analysis.
+1. Why do most programmers import pandas as pd? Traditionally, "pd" is used as the alias for pandas. Therefore, whenever you see pd. in the code, it's referring to the use of pandas and its capabilities.
+2. Series: A Series is a one-dimensional object containing a sequence of values, very similar to a column of data in an Excel spreadsheet. The Series data structure has an associated index which can be either numbers, or strings (ie. named labels): ``` series_obj = pd.Series([10,20,30,40,50]) ``` The index of the Series object is displayed on the left, the values are displayed on the right and the data type is displayed beneath.
+   - Notes: "dtype: int64" means data is stored as integers. Data type (dtype) represents how a value is stored in memory and, for numbers, it indicates how precisely it can be represented in memory.
+   - Math can’t be applied to the string “10” so perhaps it would need to be converted to an integer (int64) data type in order to get descriptive statistics of the column (e.g., mean, standard deviation) or to perform machine learning.
+
+Wearable data is somewhat unique and can be represented as any of the data types depending upon the values being collected. For example, the date of collection would be represented as type date64 in Pandas. The delta or difference between two time points would be stored as type timedelta. Moreover, wearable data is typically time series data that is stored as float64.
+4. The values, in a Series object, can be accessed by placing the associated index position within square brackets. It is similar to how we access values from within a Python List.
+```
+series_obj = pd.Series([10,20,30,40,50])
+series_obj[0]
+```
+
 ## 📚 How to Use These Notes
 - **Browse** for quick reference during coding.
 - **Practice** the examples in a Python environment like Jupyter Notebook.
