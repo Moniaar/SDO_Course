@@ -150,6 +150,34 @@ Wearable data is somewhat unique and can be represented as any of the data types
 series_obj = pd.Series([10,20,30,40,50])
 series_obj[0]
 ```
+5. Labling the data: A label can be used to identify each data point (row) by providing a list of the desired labels to the index property of the Series object.
+```
+series_obj = pd.Series([10,20,30,40,50], index = ["CA", "FL", "NY", "PA", "TX"])
+```
+6. When the values in a Series object have labels, you can use the labels to select values: ``` series_obj["CA"] ```. If you're requesting more than one label (index), they must be placed within a list:
+
+``` series_obj[["CA", "NY", "TX"]] ```
+### Element-wise operations
+An operation can be applied to each element in a Series object. Element-wise operations are convenient as we don't need to use a for loop to apply the operation. Pandas will apply the operation to each element in the Series for us.
+8. An operation can be applied to each element in a Series object. Element-wise operations are convenient as we don't need to use a for loop to apply the operation. Pandas will apply the operation to each element in the Series for us: ``` series_obj >20 ```
+### DataFrames:
+The DataFrame is another data structure in pandas. A DataFrame is a two-dimensional array of values. Much like an Excel spreadsheet, it is a rectangular table of columns and rows with both a row index and a column index. It can, somewhat, be thought of as a collection of Series objects, each of which can have a different data type (e.g., strings, numbers).
+Typically, pandas will import data (e.g., from a csv file) as a DataFrame. However, a DataFrame may be constructed, for example, by using a dictionary (key/value pairs) with the key being the column name and the value being a list of row values.
+```
+# Creating a sample DataFrame using a dictionary of lists of values.
+
+data = {"Name": ["Tim Miller", "Ann Carter", "Ellen Lee", "Sam Carr", "Al Ball", "Carl Zee", "Sara Martin"], 
+        "Gender": ["Male", "Female", "Female", "Male", "Male", "Male", "Female"],
+        "Age": [32, 44, 21, 19, 45, 27, 39]}
+df = pd.DataFrame(data)
+df
+```
+We can use the head function to preview only the first 5 rows: ``` df.head() ``` or tail() method to preview last 5 ones.
+9. You can retrieve a column from a DataFrame by using the column's name between square brackets. (A Series object is returned.): ``` df['Name'] ``` You can also use dot notation to retrieve a column (Series) from a DataFrame, but only if the column name is a valid Python variable name (e.g., no spaces): ``` df.Name ```
+
+<div class="alert alert-block alert-info">
+<b>Tip:</b> When using dot notation (attribute notation), following the dot, you can use the tab key to complete the column name (or any other attribute). For example, using the above DataFrame, try typing just 'df.N'. Then use the tab key, and Jupyter will complete the rest, or present any other options that begin with 'df.N'. This is known as tab completion and is provided as a convenience by Jupyter.
+</div>
 
 ## 📚 How to Use These Notes
 - **Browse** for quick reference during coding.
