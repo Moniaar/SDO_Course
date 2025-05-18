@@ -231,6 +231,26 @@ data
 df = pd.read_csv("data/heart_disease.csv")
 ```
 - you can use the method sample to the DataFrame's sample() method returns a random sampling of rows from the dataset. The number passed to the method determines the number of rows returned: ``` df.sample(10) ```
+## Descriptive and summary statistics
+1. The describe() method displays the descriptive statistics about a DataFrame including the mean, median, min, max and quartile values for each numerical column: ``` df.describe() ```
+2. You can also call individual methods on a column (Series object) to get a particular descriptive value for that column: ``` df["age"].min() ``` aka ``` df["chol"].mean() ```
+3. To view a summary of non-numerical (categorical) columns, you should set the "include" parameter of the describe method equal to "object". In pandas, categorical variables are of type "object": ``` df.describe(include="object") ``` The summary will include the top occurring category for each column along with its frequency, or: ``` df["sex"].describe() ```
+4. The info() method displays information about a DataFrame including column data type (dtype) and non-null values: ``` df.info() ``` Using the info() method can be a valuable way to determine if there are any missing values in our dataset. Above, note that info() indicates that the dataset has "303 entries". Also, note that it indicates that each column has "303 non-null" values. A "null" value indicates a missing value, so the above suggests that there are no missing values in the dataset. Further, info() helpfully provides information about the datatype (Dtype) of each column
+5. How to display the unique values: ``` df["target"].unique() ```
+6. A Series object (single column) can be passed into Python's built-in set() function to see the column's unique values: ``` set(df["target"]) ``` However, The unique() method tends to be faster. Python's set() function can be a little slower primarily because it sorts the returned values, which can be helpful in locating a specific category when there are a lot of distinct values within a given column.
+7. The DataFrame's corr() method will display the pairwise correlations among the DataFrame's columns: ``` df.corr(numeric_only=True) ``` or select specfic columns ``` df[["age", "max_hr"]].corr() ``` It's important to be able to interpret correlation coefficients:
+- Perfect: If the value is near ± 1, then as one variable increases, the other variable tends to also increase (if positive) or decrease (if negative).
+- High: If the value lies between ± 0.50 and ± 1, then it is said to be a strong correlation.
+- Moderate: If the value lies between ± 0.30 and ± 0.49, then it is said to be a moderate correlation.
+- Low: When the value lies between ± .29 and 0, then it is said to be a small correlation.
+- No correlation: When the value is zero there is no correlation between the variables.
+8. We often need to convert categorical variable names into numbers for data analysis and machine learning, so being able to determine the number of unique values within a column can be helpful. For example, knowing that there are only two categories within a column, as shown above, we would know that we could perhaps convert 'Yes' to 1 and 'No' to 0, when numbers are required. If we hadn't determined the unique values with the column, perhaps we could have missed that there was a 'Maybe' option that also needed to be converted.
+9. Identifying correlations among the columns (independent variables) in a dataset can be very important. This is known as _collinearity_ and can be detrimental to training a machine learning model.
+10. Sorting dataframes: The DataFrame's sort_values() method takes a "by" parameter to indicate which column the DataFrame should be sorted by: ``` df.sort_values(by="age").head() ``` but By default, sort_values() will sort the values from smallest to largest. But remember that pandas don't modify the data unless you put the copied version into another dataFrame name variable, so to save your modification you do this: ``` df = df.sort_values(by="age") ``` or use inplace like I said above.
+11. To sort the values from largest to smallest, you can set the "ascending" parameter of the sort_values() method to False: ``` df.sort_values(by="age", ascending=False).head() ```
+### nlargest() & nsmallest:
+
+---
 ## 📚 How to Use These Notes
 - **Browse** for quick reference during coding.
 - **Practice** the examples in a Python environment like Jupyter Notebook.
