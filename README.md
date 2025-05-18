@@ -200,6 +200,37 @@ df
 ```
 6. If you prefer to just have the DataFrame modify itself in place rather than return a copy of itself, then you can set the drop method's "inplace" parameter to True, as shown below: ``` df.drop(6, axis=0, inplace=True) ```
 7. Note: Be careful when making changes "inplace". Inplace changes modify the original data and the only way to get it back is by reimporting it. Alternatively, by working with a copy, you can easily return to the original DataFrame when circumstances require it without needing to reimport data.
+### Using loc() and iloc():
+#### loc():
+1. Using loc (short for location) allows you to select a subset of the rows and columns using the label/name of the row/column. If the rows were not given labels (named), then their index position is their label. Within the square brackets, the selection preceding the (optional) comma refers to the rows you would like selected. Following the (optional) comma is the selection referring to the desired columns. The selection is inclusive of the end position.
+Selecting the rows 0 through (and including) 5, and the column "b":
+```
+data.loc[:5, "b"]
+```
+2. The comma is optional. No comma assumes all columns will be returned ```data.loc[:5] ``` If no comma follows the row selection then all columns are returned.
+3. Selecting the rows 6 through to the end of the DataFrame, and the columns "a" through "e" (inclusive): ```data.loc[6:, 'a':'e'] ```
+4. *Selecting all of the rows of the DataFrame, and the columns "c", "f" and "i" (in that order)*: ``` data.loc[:, ['c', 'f', 'i']]     # not consecutive ``` When selecting by label, the end point (stopping position) is included, for both rows and columns.
+#### iloc():
+1. Using iloc allows you to select a subset of the rows and columns using their index position. Thus, only integers can be used. Within the square brackets, the selection preceding the (optional) comma refers to the rows you would like selected. Following the (optional) comma is the selection referring to the desired columns. The selections will **_not_** include the end position.
+2. *Selecting the rows from the beginning of the DataFrame (the first row) through to index position 5 (but not including index position 5). Then, selecting the columns located at index positions 2 through 5 (but not including index 5)*: ``` data.iloc[:5, 2:5] ```
+3. Selecting rows at index 5, 0 and 3 (in that order). Then selecting columns located at index 9, 5 and 0 (in that order): ``` data.iloc[[5, 0, 3], [9, 5, 0]] ```
+4. Select the rows where column "j" is greater than 50 (indicated by everything before the comma). Then, just select column "j" (indicated by what follows the comma). Now, set those values equal to 100:
+```
+data.loc[data["j"] > 50, 'j'] = 100
+
+data
+```
+5. Select the rows with index positions 5 through 8, but not including 8 (indicated by everything before the comma). Then, just select the column at index position 0, the first column (indicated by what follows the comma). Now, set those values equal to -100:
+```
+data.iloc[5:8, 0] = -100
+data
+```
+### How to import data from pandas:
+- Here is how to import data into pandas:
+```
+df = pd.read_csv("data/heart_disease.csv")
+```
+- you can use the method sample to the DataFrame's sample() method returns a random sampling of rows from the dataset. The number passed to the method determines the number of rows returned: ``` df.sample(10) ```
 ## 📚 How to Use These Notes
 - **Browse** for quick reference during coding.
 - **Practice** the examples in a Python environment like Jupyter Notebook.
