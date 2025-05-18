@@ -264,7 +264,35 @@ df.head()
      ```
    - Remember, a copy is returned so we set the existing column equal to the transformed values.
    - It is extremely useful to confirm a column's unique values prior to tranformation. It can clarify spelling and whether uppercase or lowercase was used. And, importantly, it can expose hidden spaces preceding or following a value.
+  
+### Data Analysis
+1. Conditional selection: ``` df["sex"]==1 ``` Conditional (boolean) selection is a question and always returns either True or False. This result can be placed within the square brackets of a DataFrame, using .loc, and only the rows that were True will be returned.
+   - Here is more example: Select the rows where the column "sex" is equivalent to 1 ("Female"). Then display just the column "age": ``` df.loc[df["sex"]==1, "age"] ```
+3. The count() method displays the number of rows that are included in a selection, here is an example of how it works: Get the rows where the column chest_pain is equivalent to 3. Return only the column "sex", and display the number of rows returned:
+```
+# Use count() to get the number of rows (returned) in a selection.
+
+df.loc[df["chest_pain"]== 3, "sex"].count()
+```
+4. The value_counts() method displays the itemized counts of each category within a column. In other words, it breaks the column down into its individual categories then sums by category. For example, if the column "sex" contained the values [M, F, F, M, F, M, F, F], value_counts() would return that there are 5 of the category F and 3 of the category M. Here is an example of how it works: Get the rows where the column chest_pain is equivalent to 3. Return only the column "sex", and itemize the number of rows returned by gender:
+```
+df.loc[df["chest_pain"]== 3, "sex"].value_counts()
+```
+5. Multiple conditions: Using .loc, you can set multiple conditions for a query. The ampersand (&) means "and" and the pipe symbol (|) means "or".
+   - Get the rows where the column "sex" is equivalent to 1 ("Female") AND where the column "max_hr" is greater than the average "max_hr". Return only the column "sex", and display the number of rows returned:
+     ```
+     mean_max_heart_rate = df["max_hr"].mean()
+
+     df.loc[(df["sex"]== 1) & (df["max_hr"] > mean_max_heart_rate), "sex"].count()
+     ```
+   - Get the rows where the column "chest_pain" is equivalent to 0 OR the column "age" is greater than 60; AND, from among those rows, get the rows where the column "sex" is equivalent to 0 ("Male"). Return only the column "heart disease", and display the itemized count of how many did and did not have heart disease:
+     ```
+     df.loc[((df["chest_pain"] == 0) | (df["age"] > 60)) &
+     (df["sex"] == 0), "heart_disease"].value_counts()
+     ```
+   - Because of precedence and the order of operations, it's important to place parentheses around each condition to clarify the desired order of operations.
 ---
+
 ## 📚 How to Use These Notes
 - **Browse** for quick reference during coding.
 - **Practice** the examples in a Python environment like Jupyter Notebook.
