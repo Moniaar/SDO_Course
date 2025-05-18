@@ -250,6 +250,20 @@ df = pd.read_csv("data/heart_disease.csv")
 11. To sort the values from largest to smallest, you can set the "ascending" parameter of the sort_values() method to False: ``` df.sort_values(by="age", ascending=False).head() ```
 ### nlargest() & nsmallest:
 
+### Data_Transformation
+1. How to rename a column? You need to name your columns something meaningfull for you to be able to read and modify clearly. The DataFrame's rename() method uses a column parameter. Set the column parameter equal to a dictionary representing the present column name paired with the name that you would like the column renamed to:
+```
+df = df.rename(columns={"target":"heart_disease"})
+df.head()
+```
+2. Transform categorical variables to numbers:
+   - Most machine learning algorithms require numbers, so it can be imperative to convert all categorical variables to numerical representations.The DataFrame's map() method takes a dictionary of pairs representing the present value paired with the desired transformed value:
+     ```
+     df["sex"] = df["sex"].map({"Male":0, "Female":1})
+     df.head()
+     ```
+   - Remember, a copy is returned so we set the existing column equal to the transformed values.
+   - It is extremely useful to confirm a column's unique values prior to tranformation. It can clarify spelling and whether uppercase or lowercase was used. And, importantly, it can expose hidden spaces preceding or following a value.
 ---
 ## 📚 How to Use These Notes
 - **Browse** for quick reference during coding.
