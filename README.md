@@ -338,6 +338,27 @@ $$\Large\sqrt[]{\frac {\Sigma (x_{i}-\bar{x})^{2}}{n-1} }$$
 
 _Let's walk through the above formula and summarize what we've discussed: The numerator is simply the sum of the squared distance that each value is from the mean. We then divide that sum by n-1 (we'll assume that the data is a sample from larger a population) to get the average squared distance or deviation from the mean. Finally, because we squared the deviations from the mean, we'll now take the square root of the calculated quantity to undo the squaring and put everything back into the original terms._
 - The mean is interpreted as the expected value, and the standard deviation can be interpreted as the expected range of values around the mean.
+
+### Normalization
+<mark>**Normalization**</mark>, in the **_general sense_**, refers to scaling our numeric columns to bring them into the **same terms** so that they fall within a smaller and standard range of values, making it easier to compare them. This is useful because data variables are typically measured in varied units with varied magnitudes. For example, a patient's age is measured in terms of years while heart rate is measured in terms of beats per minute. These variables are measured in completely different terms which makes it difficult to make a comparison as to which may be better or worse than the other.
+However, normalization, in the **_specific sense_**, refers to scaling variables so that their values fall strictly between 0 and 1, making it easier to compare them. This is also known as min-max scaling.
+Normalization scales down the data values to between 0 and 1: $$\large\ normalization = \frac{X-X_{min}}{X_{max}-X_{min}}$$
+Given any dataset you would do the following:
+1. Identify the minimum and maximum values
+2. Subtract both values, This becomes the denominator for our scaling.
+3. Then apply the role above to any sample X.
+Here is how to do it in code:
+```
+import pandas as pd
+df = pd.read_csv("data/data_normalization/heart-disease.csv", usecols=[0,4,5])
+df.head()
+df.min()
+df.max()
+(df - df.min())/(df.max() - df.min())
+```
+It should now be clear why normalizing values is useful. It's an effective way of comparing values that are measured in different units and it scales values down into a standard range.
+Another scaling technique that is used to transform variables so that they are in similar terms is called standardization. This technique scales values so that they are in terms of how far they are from their respective means (in terms of standard deviations). Rather than falling between 0 and 1 as normalization does, standardized values are scaled to fall typically between -3 and 3 (see Z-score).
+
 ---
 
 ## 📚 How to Use These Notes
