@@ -291,6 +291,53 @@ df.loc[df["chest_pain"]== 3, "sex"].value_counts()
      (df["sex"] == 0), "heart_disease"].value_counts()
      ```
    - Because of precedence and the order of operations, it's important to place parentheses around each condition to clarify the desired order of operations.
+
+## 📝 General Notes: Introduction to Statistics
+1. An effective way to understand a data distribution is to describe the center of the data--it's central tendency. The mean, median and mode are the fundamental ways to do this and are the most basic descriptive statistics functions.
+### The mean
+- you can calculate it either by summing up the values and dividing by their number, or my using the mean() method.
+```
+dataset["numbers"].sum()
+len(dataset["numbers"])
+dataset["numbers"].sum()/len(dataset)
+
+or this:
+dataset["numbers"].mean()
+```
+### The median
+- If we have a dataset of 10 numbers, and our values are ordered (as the values in our dataset are), the median is the middle-most value if there are an odd number of values. If there are an even number of values, then we average the two center-most values. In our dataset, we have an even number of values so we will average the two center values ( 4 and 5) to attain a median value of 4.5. This value is slightly different from our mean value, but is another way to describe the center of our data.
+- The median is useful in that, unlike the mean, it is fairly unaffected by outliers. Now we can use the median() method:
+```
+dataset["numbers"].median()
+```
+### The mode
+- The mode is the most frequently occurring value or set of values. If any values are tied in terms of their frequency, then those values will be reported as modes together, and the dataset is said to be bimodal or multimodal. It's most useful when your data is repetitive and you want to identify which values occur most frequently. For our dataset, the most frequently occuring value is 5. It can be used to describe the central tendency of a dataset.
+```
+dataset["numbers"].mode()[0]
+```
+![image](https://github.com/user-attachments/assets/638d2af2-e17d-4d7d-b292-0c4b58c72a89)
+- However, if there are extreme outliers (a value that is much higher or lower than the rest of the values), they will cause the mean to shift significantly in the direction of the outliers, whereas the median is fairly unaffected.
+- The NightSignal Algorithm uses wearable data to detect pre-symptomatic and asymptomatic COVID-19 infections. The NightSignal Algorithm module on the Research page provides an example of the use of central tendency. It calculates the average resting heart rate (RHR) overnight each day for each individual, and then uses the median value as the healthy baseline. The median often gives a better sense of what a “typical” value is, which helps provide an intuition about the dataset.
+
+### Standard_Deviation
+An important characteristic of datasets is how much variability exists among individual samples. Without a measure of variability, you can’t effectively compare two datasets. For example, if one dataset consists of the values [99, 100, 101], and another dataset consists of the values [0, 100, 200], they both have the same mean and median values of 100, yet they have very different amounts of variability. There is a large amount of variability in the second dataset compared to the first. The variability is often a defining characteristic of a dataset. The standard deviation is perhaps the most informative and certainly the most widely used measure of a dataset's variability. Let's look at how it's calculated.
+Let's use the ten values below to calculate the standard deviation of a dataset. We are interested in the average difference between each value in the distribution and the mean of the distribution. We first need to calculate the mean, as shown below:
+![image](https://github.com/user-attachments/assets/7c88400e-d827-4e28-945d-46a94b9e97e3)
+Next, the **average difference (or deviation)** is calculated by taking each individual value and subtracting the mean from that value. Once we calculate a deviation score for each individual value in the distribution, we can then sum the deviation scores and divide by n to get the average, which would be the standard deviation. However, there's one problem. Half of the deviation scores fall below the mean, and half fall above the mean. This means that when we sum these deviation scores together, we will get zero, as shown below. And zero divided by any number will be zero. Therefore, we need to do something to work around this issue.
+We can make each deviation score positive by squaring it. Hence, for each value in the distribution, we subtract the mean of the distribution and then square the deviation. We then add up all of these squared deviations, giving us the <mark>**sum of the squared deviations**</mark>.
+- In the image above, notice that the original column is named "Feature". In bioinformatics, what some may call a column, field, or independent variable is called a "feature". A feature is the generic name for any column within a dataset. It will be helpful to get used to the terminology commonly used in data science and bioinformatics.
+We next divide by n (the number of samples in the distribution) minus one to get the average of the squared deviations. This is known as the variance.
+Because we previously needed to square each deviation score to avoid getting a sum of zero, we now need to reverse that process. This is accomplished by taking the square root of the variance, and the result gets our values back into their original terms. The <mark>**square root of the variance**</mark> is known as the <mark>**standard deviation**</mark>. It is a measure of, on average, how much individual samples within a data set vary from the middle. You can use this method to display it: ``` dataset["numbers"].std() ```
+![image](https://github.com/user-attachments/assets/49d7e84d-d6ce-4ac3-b4d3-e9b56c227578)
+The standard deviation is extremely useful in helping us to understand our data. It effectively enables us to compare different data points within our dataset to each other. And it's especially effective in allowing us to compare values between different datasets.
+
+The formula for the **`standard deviation`** of a dataset is:  
+
+
+$$\Large\sqrt[]{\frac {\Sigma (x_{i}-\bar{x})^{2}}{n-1} }$$
+
+_Let's walk through the above formula and summarize what we've discussed: The numerator is simply the sum of the squared distance that each value is from the mean. We then divide that sum by n-1 (we'll assume that the data is a sample from larger a population) to get the average squared distance or deviation from the mean. Finally, because we squared the deviations from the mean, we'll now take the square root of the calculated quantity to undo the squaring and put everything back into the original terms._
+- The mean is interpreted as the expected value, and the standard deviation can be interpreted as the expected range of values around the mean.
 ---
 
 ## 📚 How to Use These Notes
