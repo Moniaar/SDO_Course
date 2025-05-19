@@ -365,6 +365,8 @@ df.max()
 It should now be clear why normalizing values is useful. It's an effective way of comparing values that are measured in different units and it scales values down into a standard range.
 Another scaling technique that is used to transform variables so that they are in similar terms is called standardization. This technique scales values so that they are in terms of how far they are from their respective means (in terms of standard deviations). Rather than falling between 0 and 1 as normalization does, standardized values are scaled to fall typically between -3 and 3 (see Z-score).
 
+## 📝 General Notes: Introduction to Data Visualization
+### Heatmaps
 ---
 
 ## 📚 How to Use These Notes
