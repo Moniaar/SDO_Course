@@ -367,6 +367,30 @@ Another scaling technique that is used to transform variables so that they are i
 
 ## 📝 General Notes: Introduction to Data Visualization
 ### Heatmaps
+A heatmap is a graphical representation of data where values are expressed as colors. It is an effective visual summary of information and enables a large volume of data to be communicated efficiently.
+- If you want to view a matrix of the pair-wise correlations between the variables in the dataset:
+  use the following: ``` df.corr(numeric_only=True) ```
+  Here is how to render a heatmap in a family of blue colors. Note that the darker the blue, the higher the correlation between a given variable pair. The lighter the blue, the weaker the correlation between variable pairs.
+  ```
+  sns.heatmap(df.corr(numeric_only=True), cmap="Blues", annot=True);
+  ```
+### Heatmaps in medicine
+A heatmap is a common method of visualizing gene expression changes from among hundreds to thousands of genes from different treatment conditions. The heatmap may also be combined with clustering methods which group genes and/or samples together based on the similarity of their gene expression pattern. This can be useful for identifying genes that are commonly regulated, or biological signatures associated with a particular condition (e.g a disease or an environmental condition).
+- A heatmap is a common method of visualizing gene expression changes from among hundreds to thousands of genes from different treatment conditions. The heatmap may also be combined with clustering methods which group genes and/or samples together based on the similarity of their gene expression pattern. This can be useful for identifying genes that are commonly regulated, or biological signatures associated with a particular condition (e.g a disease or an environmental condition).
+- Genes are represented in rows of the matrix and chips/samples in the columns. A colored matrix display represents the matrix of values as a grid; the number of rows is equal to the number of genes being analyzed, and the number of columns is equal to the number of chips/samples. The boxes of the grid are colored according to the numerical value in the corresponding matrix cell (the gene expression values).
+- You will be able to pick genes based on their expression levels under different conditions. Some may not change but those that do change are of the greatest interest. These indicate gene expression associated with a particular condition. Heatmaps also help one to identify significant groupings among the genes through associations.
+- Heatmaps are used to show relationships between two variables, one plotted on each axis. By observing how cell colors change across each axis, you can observe if there are any patterns in value for one or both variables. In heatmaps, the data is displayed in a grid where each row represents a gene and each column represents a sample. The color and intensity of the boxes are used to represent changes (not absolute values) of gene expression.
+```
+import pandas as pd
+from bioinfokit import analys, visuz
+
+
+df = pd.read_csv("data/data_heatmap/gene_expression.csv")
+# set gene names as index
+df = df.set_index(df.columns[0])
+df.head()
+visuz.gene_exp.hmap(df=df, rowclus=False, colclus=False, cmap='RdYlGn', tickfont=(6, 4), show=True)
+```
 ---
 
 ## 📚 How to Use These Notes
