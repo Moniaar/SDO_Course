@@ -391,6 +391,50 @@ df = df.set_index(df.columns[0])
 df.head()
 visuz.gene_exp.hmap(df=df, rowclus=False, colclus=False, cmap='RdYlGn', tickfont=(6, 4), show=True)
 ```
+
+### Volcano plot
+A volcano plot is a 2-dimensional scatter plot that has the shape of a volcano. It makes it easy to visualize the expression of thousands of genes obtained from -omics research (e.g., transcriptomics, genomics, proteomics, etc.) and to identify genes with significant changes. It is used to plot the log fold change in the observation between two conditions (e.g., the gene expression between comparison and control conditions) on the x-axis. On the y-axis is the corresponding p-value for each observation, representing the statistical significance of the change (if any) between the different conditions. A volcano plot can visualize a lot of complex information in one plot. The wider the dispersion of data points in the volcano plot the greater the significance in gene expression changes between two conditions.
+#### How can we read this plot though?
+To be clear, the x-axis of a Volcano plot represents the amount of change following a condition or experiment. The zero (0) point on the x-axis represents no change. For every point increment to the right of 0, the amount of the change doubles. For example, 1 on the x-axis represents an increase of twice the original (control) value, 2 on the x-axis represents an increase of 4 times the original value, and 3 on the x-axis represents an increase of 8 times the original value. Every point below 0 is interpreted similarly except that it represents a decrease in the original (control) value.
+The y-axis of a Volcano plot represents the significance of the change on the x-axis in p-values (probability values). The zero (0) point on the y-axis represents a p-value of 1.0. For every point increase on the y-axis, the decimal point of the p-value moves one place to the left. For example, 2 on the y-axis is equivalent to a p-value of .01, which can be interpreted as there's appoxiamtely a 1% chance that you could get the value that you observed, assuming that there is no difference between the control and experimental conditions. In other words, it suggests that the observation appears to be significant. (A 3 on the y-axis would represent a p-value of .001, a 4 would represent a p-value of .0001, etc.)
+The volcano plot enables the ability to quickly see the effect (if any) of an experiment (e.g., change in protein expression) between two conditions in terms of both an increase and decrease of the observed value along with the statistical significance of any observed change.
+#### Example:
+```
+import pandas as pd
+from bioinfokit import analys, visuz
+
+df = pd.read_csv("data/data_volcano_plot/volcano_data.csv")
+
+df.head()
+visuz.GeneExpression.volcano(df=df, lfc="log2FC", pv="p-value", show=True, plotlegend=True,
+                                    sign_line=True, color=("#EC004F", "grey", "black"))
+```
+- The gray points indicate non-significant points. The red points indicate significant up-regulated genes and the black points indicate significant down-regulated genes.
+
+![image](https://github.com/user-attachments/assets/d3cbffff-e213-4772-87cc-36aa380261ba)
+
+#### Another example
+The sample plot below is displayed with a log2-fold threshold of -1 and a p-value threshold of < 0.05 for significantly down-regulted genes. And a log2-fold threshold of 2 and a p-value threshold of < 0.01 for significantly up-regulted genes. The light gray points indicate non-significant points. The pink points indicate significant down-regulated genes (i.e., log2-fold < -1 and p-value < 0.05) and the cardinal points indicate significant up-regulated genes (log2-fold > 2 and p-value < 0.01).
+```
+visuz.GeneExpression.volcano(df=df, lfc='log2FC', pv='p-value', lfc_thr=(2, 1), pv_thr=(0.01, 0.05),
+    color=("#A31746", "lightgrey", "#FF9595"), show=True, plotlegend=True, legendpos='upper right',
+    sign_line=True, legendanchor=(1.46,1))
+```
+#### Customized plot
+```
+visuz.GeneExpression.volcano(df=df, lfc='log2FC', pv='p-value', lfc_thr=(2, 1), pv_thr=(0.01, 0.05),
+    color=("#A31746", "lightgrey", "#FF9595"), show=True, plotlegend=True, legendpos='upper right',
+    sign_line=True, legendanchor=(1.46,1), genenames=("LOC_Os09g01000.1", "LOC_Os01g50030.1", "LOC_Os06g40940.3", "LOC_Os03g03720.1"),
+    gstyle=2, geneid="GeneNames")
+```
+#### Added gene names
+```
+visuz.GeneExpression.volcano(df=df, lfc='log2FC', pv='p-value', lfc_thr=(2, 1), pv_thr=(0.01, 0.05),
+    color=("#A31746", "lightgrey", "#FF9595"), show=True, plotlegend=True, legendpos='upper right',
+    sign_line=True, legendanchor=(1.46,1),
+    genenames=({"LOC_Os09g01000.1":"EP", "LOC_Os01g50030.1":"CPuORF25", "LOC_Os06g40940.3":"GDH", "LOC_Os03g03720.1":"G3PD"}),
+    gstyle=2, geneid="GeneNames")
+```
 ---
 
 ## 📚 How to Use These Notes
