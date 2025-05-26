@@ -435,6 +435,9 @@ visuz.GeneExpression.volcano(df=df, lfc='log2FC', pv='p-value', lfc_thr=(2, 1), 
     genenames=({"LOC_Os09g01000.1":"EP", "LOC_Os01g50030.1":"CPuORF25", "LOC_Os06g40940.3":"GDH", "LOC_Os03g03720.1":"G3PD"}),
     gstyle=2, geneid="GeneNames")
 ```
+## 📝 General Notes: Introduction to Cloud Computing
+![image](https://github.com/user-attachments/assets/cd9dc254-a96d-4167-95c8-1dab64218047)
+
 ---
 
 ## 📚 How to Use These Notes
