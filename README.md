@@ -438,9 +438,18 @@ visuz.GeneExpression.volcano(df=df, lfc='log2FC', pv='p-value', lfc_thr=(2, 1), 
 ## 📝 General Notes: Introduction to Cloud Computing
 ![image](https://github.com/user-attachments/assets/cd9dc254-a96d-4167-95c8-1dab64218047)
 
+# 📖 Statistics 2 Notes
+### Principal component analysis involves 5 steps:
+- Standardize the range of values for each variable
+- Compute the covariance matrix to identify correlations among the variables
+- Compute the eigenvectors and eigenvalues of the covariance matrix to identify the principal components
+- Decide how many principal components to keep
+- Reorient the data along the principal components' axes
+
 ---
 
 ## 📚 How to Use These Notes
 - **Browse** for quick reference during coding.
 - **Practice** the examples in a Python environment like Jupyter Notebook.
 - **Expand** on these concepts by exploring Python's official documentation or additional resources.
+
